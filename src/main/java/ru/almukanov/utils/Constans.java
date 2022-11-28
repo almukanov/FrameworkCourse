@@ -1,6 +1,7 @@
 package ru.almukanov.utils;
 
 public class Constans {
+
     public final static String TEST_TEXT_TASK_2 = "git config --global user.name  \"New Sheriff in Town\"\n" +
             "git reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\n" +
             "git push origin master --force";
