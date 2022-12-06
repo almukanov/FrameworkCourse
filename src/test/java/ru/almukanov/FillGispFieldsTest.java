@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import ru.almukanov.driver.Driver;
 import ru.almukanov.model.User;
 import ru.almukanov.page.MainPage;
+import ru.almukanov.utils.Screenshot;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -53,8 +54,9 @@ public class FillGispFieldsTest
     }
         @Test
 
-        public void shouldDoTaskThree(){
-
+        public void shouldDoTaskThree() throws IOException {
+        try{
+            driver.manage().window().fullscreen();
             mainPage.openWebSite(price);
             WebElement btn = mainPage.getXpathElement("//button[@title='Virtual Machines']");
             btn.click();
@@ -98,7 +100,13 @@ public class FillGispFieldsTest
             attachFile.sendKeys(downloadFilepath + "/ExportedEstimate.xlsx");
             WebElement sendBtn = mainPage.getXpathElement("//button[@data-test-id='send']");
             sendBtn.click();
+        }
+         finally {
+            Screenshot.makeScreen(driver);
             Driver.closeDriver();
+        }
+
+
         }
 
 
