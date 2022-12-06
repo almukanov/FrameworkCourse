@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import ru.almukanov.model.User;
-import ru.almukanov.utils.Constans;
 
 public class LoginPage extends AbstractPage
 {
@@ -29,10 +28,9 @@ public class LoginPage extends AbstractPage
 	}
 
 	@Override
-	public LoginPage openPage()
+	public void openWebSite(String site)
 	{
-		driver.get(Constans.GIT);
-		return this;
+		driver.get(site);
 	}
 
 	public MainPage login(User user)

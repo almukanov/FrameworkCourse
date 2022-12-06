@@ -1,4 +1,4 @@
-package ru.almukanov.driver;
+package ru.almukanov.utils;
 
 public enum Browsers {
     Chrome(1), Firefox(0);

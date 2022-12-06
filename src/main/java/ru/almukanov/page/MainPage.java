@@ -3,51 +3,45 @@ package ru.almukanov.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.almukanov.utils.Constans;
-
-import java.time.Duration;
 
 public class MainPage extends AbstractPage
 {
 
-	@FindBy(xpath = "//*[@cm-text]")
-	private  WebElement textArea;
+	protected WebDriver webDriver ;
 
-	@FindBy(xpath = "//input[@class = 'form-control js-gist-filename js-blob-filename']")
-	private WebElement title;
-
-	@FindBy(xpath = "//select[@class='form-select select-sm js-code-indent-mode']")
-	private WebElement select;
-
-	@FindBy(xpath = "//div[@class='BtnGroup']//button")
-	private WebElement submit;
-
-	public MainPage(WebDriver driver)
-	{
-		super(driver);
-		PageFactory.initElements(this.driver, this);
+	public MainPage(WebDriver webDriver, WebDriverWait webDriverWait) {
+		super(webDriver);
+		this.webDriver = webDriver;
+		this.webDriverWait = webDriverWait;
 	}
 
+	public WebDriverWait webDriverWait;
 
 	@Override
-	public MainPage openPage()
-	{
-		driver.navigate().to(Constans.GIST_GIT);
-		return this;
+	public void openWebSite(String site) {
+		webDriver.get(site);
 	}
 
-	public MainPage fillFields(){
-		textArea.sendKeys(Constans.TEST_TEXT_TASK_2);
-		title.sendKeys(Constans.TITLE);
-		Select select1 = new Select(select);
-		select1.selectByVisibleText(Constans.TABS);
-		submit.click();
-		return this;
+	public MainPage(WebDriver webDriver) {
+		super(webDriver);
+		this.webDriver = webDriver;
+		PageFactory.initElements(this.webDriver, this);
+	}
+
+
+
+	public WebElement getIdElement(String id){
+
+		return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+	}
+	public WebElement getNameElement(String name){
+		return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.name(name)));
+	}
+	public WebElement getXpathElement(String xpath){
+		return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
 	}
 
 }

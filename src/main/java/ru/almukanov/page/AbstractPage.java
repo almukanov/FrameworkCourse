@@ -6,7 +6,7 @@ public abstract class AbstractPage
 {
 	protected WebDriver driver;
 
-	protected abstract AbstractPage openPage();
+	protected abstract void openWebSite(String site);
 
 
 	protected AbstractPage(WebDriver driver)
