@@ -3,7 +3,7 @@
 <suite name="Smoke" verbose="1" >
     <test name="UserAccess"   >
         <classes>
-            <class name="ru.almukanov.FillGispFieldsTest" />
+            <class name="ru.almukanov.TestCalculatePriceAndSendReportByEmail" />
         </classes>
     </test>
 </suite>
